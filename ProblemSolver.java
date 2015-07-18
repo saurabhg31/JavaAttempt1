@@ -75,6 +75,7 @@ public class Problem_Solver extends javax.swing.JFrame {
         jRadioButton23 = new javax.swing.JRadioButton();
         jRadioButton24 = new javax.swing.JRadioButton();
         jRadioButton25 = new javax.swing.JRadioButton();
+        jRadioButton26 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Scientific Problem Solver");
@@ -398,6 +399,15 @@ public class Problem_Solver extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(jRadioButton26);
+        jRadioButton26.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jRadioButton26.setText("Calculate Prime Nos. from n1 upto n2");
+        jRadioButton26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton26ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -489,7 +499,9 @@ public class Problem_Solver extends javax.swing.JFrame {
                                                 .addGap(18, 18, 18)
                                                 .addComponent(jRadioButton24)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(jRadioButton25)))
+                                                .addComponent(jRadioButton25)
+                                                .addGap(27, 27, 27)
+                                                .addComponent(jRadioButton26)))
                                         .addGap(0, 0, Short.MAX_VALUE))))
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(4, 4, 4))
@@ -513,9 +525,9 @@ public class Problem_Solver extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -568,7 +580,8 @@ public class Problem_Solver extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioButton23)
                     .addComponent(jRadioButton24)
-                    .addComponent(jRadioButton25))
+                    .addComponent(jRadioButton25)
+                    .addComponent(jRadioButton26))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -898,6 +911,29 @@ if(jRadioButton25.isSelected()){
     ft=(ft*12.0*2.54)+(in*2.54);
     jTextField4.setText(ft/100.0+" m / "+ft+" cm");
 }
+if(jRadioButton26.isSelected()){
+    int n1=Integer.parseInt(jTextField1.getText());
+    int n2=Integer.parseInt(jTextField2.getText());
+    int i,x,f=0,l=0;
+    if(n1<2)
+        n1=2;
+    for(i=n1;i<=n2;i++){
+        f=0;
+        for(x=2;x<=i/2;++x){
+            if(i%x==0){
+                f=1;
+                break;
+            }            
+            }
+        if(f==0){
+            jTextArea1.append(i+"  ");
+            l++;
+        }
+        }
+    jTextField4.setText("No. of prime nos= "+l);
+    jTextArea1.append("\n Number of prime numbers from "+(jTextField1.getText())+" to "+n2+" (including the limits) is: "+l);
+    System.out.println("No. of prime nos= "+l);
+}
     }                                        
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -1209,6 +1245,17 @@ jTextField3.setVisible(false);
 jTextField5.setVisible(false);        // TODO add your handling code here:
     }                                              
 
+    private void jRadioButton26ActionPerformed(java.awt.event.ActionEvent evt) {                                               
+jLabel1.setText("Enter the lower limit (n1): ");
+jLabel2.setText("Enter the upper limit (n2): ");
+jLabel3.setText(null);
+jLabel4.setText(null);
+jTextField1.setVisible(true);
+jTextField2.setVisible(true);
+jTextField3.setVisible(false);
+jTextField5.setVisible(false);// TODO add your handling code here:
+    }                                              
+
     /**
     * @param args the command line arguments
     */
@@ -1248,6 +1295,7 @@ jTextField5.setVisible(false);        // TODO add your handling code here:
     private javax.swing.JRadioButton jRadioButton23;
     private javax.swing.JRadioButton jRadioButton24;
     private javax.swing.JRadioButton jRadioButton25;
+    private javax.swing.JRadioButton jRadioButton26;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JRadioButton jRadioButton5;
